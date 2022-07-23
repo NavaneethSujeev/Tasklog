@@ -29,7 +29,7 @@ class HomeController extends Controller
     }
     public function taskdetails(){
         if(Auth::user()->user_type == "supervisor"){
-            $tasks  = User::select('Users.name','Tasks.userid','Tasks.id','Tasks.date','Tasks.starttime','Tasks.endtime','Tasks.status')->Join('Tasks', 'Tasks.userid', '=', 'Users.id')->orderby('Users.id')->get();
+            $tasks  = User::select('Users.name','Tasks.userid','Tasks.id','Tasks.date','Tasks.starttime','Tasks.endtime','Tasks.status','Tasks.task')->Join('Tasks', 'Tasks.userid', '=', 'Users.id')->orderby('Users.id')->get();
             return view('taskview',compact('tasks'));
 
         }else{
